@@ -1,3 +1,5 @@
+import threading
+
 import numpy as np
 from PIL import Image
 from PyQt5.QtGui import  QPixmap, QImage
@@ -133,6 +135,7 @@ class Ui_MainWindow(object):
         self.label0.setText("IMANGE NOT FOUND")
         self.pushButton.clicked.connect(self.openfile)
         self.pushButton_3.clicked.connect(self.exprose)
+        self.pushButton_4.clicked.connect(self.screen.close)
         self.retranslateUi(MainWindow)
         self.pixmap=QPixmap()
     def retranslateUi(self, MainWindow):
@@ -197,7 +200,17 @@ class Ui_MainWindow(object):
         self.label0.setPixmap(self.pixmap)
         monitor = QDesktopWidget().screenGeometry(1)
         self.screen.move(monitor.left(), monitor.top())
-        self.screen.showFullScreen()
+        th=threading.Thread(target=self.showscreen())
+        th.start()
+
+    def showscreen(self):
+        self.screen.show()
+        start=time.time()
+        print(start)
+        for i in range(6):
+            time.sleep(1)
+            print(i)
+        self.screen.close()
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
