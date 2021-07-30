@@ -167,7 +167,13 @@ class Ui_MainWindow(object):
 
         img = Image.open(filename)
         img.load()
-        imange = np.asarray(img)
+
+        tempimange=np.zeros((1620,2560,3), dtype=np.uint8)
+        inputimange = np.asarray(img)
+        inputimange=np.rot90(inputimange,1)
+        position=inputimange.shape
+        tempimange[0+100:position[0]+100, 0:position[1], :]=inputimange
+        imange=tempimange
         height, width, channel = imange.shape
         bytesPerLine = 3 * width
         qImg = QImage(imange.data, width, height, bytesPerLine, QImage.Format_RGB888)
