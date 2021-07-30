@@ -2,13 +2,15 @@ import threading
 
 import numpy as np
 from PIL import Image
+import sys
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 from PyQt5.QtGui import  QPixmap, QImage
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QDesktopWidget
 import time
-from threading import Thread
-import asyncio
+import threading
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -138,6 +140,7 @@ class Ui_MainWindow(object):
         self.pushButton_4.clicked.connect(self.screen.close)
         self.retranslateUi(MainWindow)
         self.pixmap=QPixmap()
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -195,22 +198,23 @@ class Ui_MainWindow(object):
         print(filename)
         self.textEdit.setText(filename)
         self.startconver(filename)
-
+    def waitexprose(self):
+        print("stop")
+        self.screen.close()
+        self.my_qtimer.stop()
     def exprose(self):
-        self.label0.setPixmap(self.pixmap)
+        #self.label0.setPixmap(self.pixmap)
         monitor = QDesktopWidget().screenGeometry(1)
         self.screen.move(monitor.left(), monitor.top())
-        th=threading.Thread(target=self.showscreen())
-        th.start()
+        self.screen.showFullScreen()
+        self.my_qtimer = QtCore.QTimer()
+        self.my_qtimer.timeout.connect(self.waitexprose)
+        delay=int(self.horizontalSlider.value())
+        print(delay)
+        self.my_qtimer.start(delay*1000)
 
-    def showscreen(self):
-        self.screen.show()
-        start=time.time()
-        print(start)
-        for i in range(6):
-            time.sleep(1)
-            print(i)
-        self.screen.close()
+
+
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
