@@ -17,7 +17,7 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="PathToImange_Open">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -36,7 +36,7 @@
      <string notr="true"/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="Open">
     <property name="geometry">
      <rect>
       <x>880</x>
@@ -77,7 +77,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="Save">
     <property name="geometry">
      <rect>
       <x>880</x>
@@ -96,7 +96,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="PathToImange_Save">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -159,7 +159,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_3">
+   <widget class="QTextEdit" name="ExproseTime">
     <property name="geometry">
      <rect>
       <x>880</x>
@@ -216,25 +216,6 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>520</y>
-      <width>751</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>EXPROSE</string>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
@@ -254,7 +235,7 @@ p, li { white-space: pre-wrap; }
      <pixmap>../../Desktop/Рамка2.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="Stop">
     <property name="geometry">
      <rect>
       <x>770</x>
@@ -281,11 +262,11 @@ p, li { white-space: pre-wrap; }
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="imange_Up">
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>90</y>
+      <y>50</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -299,11 +280,11 @@ p, li { white-space: pre-wrap; }
      <string>UP</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="imange_Down">
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>210</y>
+      <y>170</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -317,11 +298,11 @@ p, li { white-space: pre-wrap; }
      <string>DOWN</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="imange_Left">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>150</y>
+      <y>110</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -335,11 +316,11 @@ p, li { white-space: pre-wrap; }
      <string>LEFT</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="imange_Right">
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>150</y>
+      <y>110</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -351,6 +332,105 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>RIGHT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="imange_RotateLeft">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>230</y>
+      <width>60</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>R_LEFT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="imange_RotateRight">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>230</y>
+      <width>60</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>R_RIGHT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="imange_FlipV">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>310</y>
+      <width>60</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Flip_V</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="imange_FlipH">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>310</y>
+      <width>60</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Flip_H</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Exprose">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>520</y>
+      <width>751</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>EXPROSE</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
