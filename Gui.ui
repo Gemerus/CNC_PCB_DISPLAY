@@ -262,12 +262,12 @@ p, li { white-space: pre-wrap; }
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="imange_Up">
+   <widget class="QPushButton" name="FIT">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>50</y>
-      <width>60</width>
+      <x>409</x>
+      <y>70</y>
+      <width>111</width>
       <height>60</height>
      </rect>
     </property>
@@ -277,105 +277,15 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>UP</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="imange_Down">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>170</y>
-      <width>60</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>DOWN</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="imange_Left">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>110</y>
-      <width>60</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>LEFT</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="imange_Right">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>110</y>
-      <width>60</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>RIGHT</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="imange_RotateLeft">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>230</y>
-      <width>60</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>R_LEFT</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="imange_RotateRight">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>230</y>
-      <width>60</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>R_RIGHT</string>
+     <string>FIT</string>
     </property>
    </widget>
    <widget class="QPushButton" name="imange_FlipV">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>310</y>
-      <width>60</width>
+      <x>409</x>
+      <y>140</y>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>
@@ -392,8 +302,8 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>310</y>
-      <width>60</width>
+      <y>140</y>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>

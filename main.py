@@ -166,11 +166,8 @@ class Ui_MainWindow(object):
         self.Open.clicked.connect(self.openfile)
         self.Exprose.clicked.connect(self.exprose)
         self.Stop.clicked.connect(self.screen.close)
-        self.imange_Left.clicked.connect(self.SetImangeTranformation())
         self.retranslateUi(MainWindow)
         self.pixmap=QPixmap()
-
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -192,10 +189,8 @@ class Ui_MainWindow(object):
         self.imange_FlipV.setText(_translate("MainWindow", "Flip_V"))
         self.imange_FlipH.setText(_translate("MainWindow", "Flip_H"))
         self.Exprose.setText(_translate("MainWindow", "EXPROSE"))
-
     def sliderTime(self):
-        self.textEdit_3.setText(str(self.horizontalSlider.value()))
-
+        self.ExproseTime.setText(str(self.horizontalSlider.value()))
     def SetImangeTranformation(self,positionV,positionH,angle,flip):
         print(self.imangePosition)
 
@@ -217,42 +212,64 @@ class Ui_MainWindow(object):
         self.PathToImange_Open.setText(filename)
         self.Inputimg = Image.open(filename)
         self.Inputimg.load()
-        self.transformImnage(self)
         self.startconver()
 
-    def transformImnage(self,imgForTranform):
-        pass
-    def startconver(self,):
-        start_time = time.time()
+    def FitToBOARD(self,imgForTranform):
         tempimange=np.zeros((1620,2560,3), dtype=np.uint8)
         inputimange = np.asarray(self.Inputimg)
-        inputimange=np.rot90(inputimange,1)
-        position=inputimange.shape
-        tempimange[0+100:position[0]+100, 0:position[1], :]=inputimange
+        if inputimange.shape[0]>inputimange.shape[1]:
+            inputimange = np.rot90(inputimange, 1)
+        ImSize=inputimange.shape
+        boardL=1620
+        boardH=2560
+        SizeL=ImSize[1]
+        SizeH=ImSize[0]
+        OffsetL=(boardH/2)-(SizeL/2)-480
+        OffsetH=(boardL/2)-(SizeH/2)
+        print(OffsetL)
+        print(OffsetH)
+        tempimange[0+int(OffsetH):ImSize[0]+int(OffsetH), 0+int(OffsetL):ImSize[1]+int(OffsetL), :]=inputimange
         imange=tempimange
-        self.label.setPixmap(self.SetLableImange(imange))
-        self.label_2.setPixmap(self.SetLableImange(self.ConvertToSubpixel(imange)))
-        img2 = Image.fromarray(self.ConvertToSubpixel(imange), "RGB")
+        return imange
+    def startconver(self,):
+        start_time = time.time()
+
+        self.label.setScaledContents(False)
+        self.label.setPixmap(self.SetLableImange(np.asarray(self.Inputimg)).scaledToHeight(225))
+        self.label_2.setPixmap(self.SetLableImange(self.ConvertToSubpixel(self.FitToBOARD(self.Inputimg))))
+        img2 = Image.fromarray(self.ConvertToSubpixel(self.FitToBOARD(self.Inputimg)), "RGB")
         img2.save("testGleb.bmp")
         print("--- %s seconds ---" % (time.time() - start_time))
 
 
-
-    def waitexprose(self):
+    def stopExprose(self):
         print("stop")
         self.screen.close()
         self.my_qtimer.stop()
+    def waitexprose(self):
+        if self.i>=0 :
+            self.progressBar.setValue(self.i)
+            self.ExproseTime.setText(str(self.i))
+            self.i-=1
+            print(self.i)
+
+        else:
+            print("stop")
+            self.screen.close()
+            self.my_qtimer.stop()
     def exprose(self):
-        #self.label0.setPixmap(self.pixmap)
+        self.label0.setPixmap(self.SetLableImange(self.ConvertToSubpixel(self.FitToBOARD(self.Inputimg))))
         monitor = QDesktopWidget().screenGeometry(1)
         self.screen.move(monitor.left(), monitor.top())
         self.screen.showFullScreen()
         self.my_qtimer = QtCore.QTimer()
         self.my_qtimer.timeout.connect(self.waitexprose)
-        delay=int(self.horizontalSlider.value())
-        print(delay)
-        self.my_qtimer.start(delay*1000)
-
+        self.delay=int(self.horizontalSlider.value())
+        print(self.delay)
+        self.i=self.delay
+        self.progressBar.setMaximum(self.i)
+        self.progressBar.setMinimum(0)
+        self.my_qtimer.start(1000)
 
 
 if __name__ == '__main__':
