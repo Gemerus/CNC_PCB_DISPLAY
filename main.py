@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         self.label_3.setGeometry(QtCore.QRect(540, 50, 435, 286))
         self.label_3.setFrameShape(QtWidgets.QFrame.Box)
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("../../Desktop/Рамка2.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("Рамка2.png"))
         self.label_3.setObjectName("label_3")
         self.Stop = QtWidgets.QPushButton(self.centralwidget)
         self.Stop.setGeometry(QtCore.QRect(770, 520, 221, 71))
@@ -278,7 +278,7 @@ if __name__ == '__main__':
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showFullScreen()
     sys.exit(app.exec_())
 
 
